@@ -1,0 +1,29 @@
+<form action="/pdo/pdo_cadastrar_artista.php" method="post">
+    <input type="text" name="nome"/>
+    <select name="idGenero" id="idGenero"></select>
+    <input type="submit" value="Cadastrar" />
+</form>
+
+<script>
+    window.onload = function carregarGeneros() {
+        
+        var url = "https://roan-quiets.000webhostapp.com/pdo/select_genero.php";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, false);
+        xhttp.send();
+        
+        var retorno = JSON.parse(xhttp.responseText);
+        
+        var selecao_genero = document.getElementById("idGenero");
+  
+        for (i = 0; i < retorno.length; i++) {
+            
+            var opcao = document.createElement("option");
+            opcao.value = retorno[i].id;
+            opcao.innerText = retorno[i].nome;
+            selecao_genero.appendChild(opcao);
+           
+        } 
+    
+    }
+</script>

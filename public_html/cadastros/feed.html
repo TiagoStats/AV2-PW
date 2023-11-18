@@ -1,0 +1,66 @@
+<body>
+
+<script>
+
+    //--> Busca Musicas
+        
+    var url = "https://roan-quiets.000webhostapp.com/pdo/select_musica_feed.php";
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url, false);
+    xhttp.send();
+        
+    var retorno = JSON.parse(xhttp.responseText);
+  
+    for (i = 0; i < retorno.length; i++) {
+        var body = document.getElementsByTagName("body");
+        
+        var titulo = document.createElement("h2");
+        titulo.innerText = retorno[i].nome_musica + ' - ' + retorno[i].nome_artista;
+        body[0].appendChild(titulo);
+        
+        var subtitulo = document.createElement("h3");
+        subtitulo.innerText = 'Genero: ' + retorno[i].nome_genero + ' - Duração: ' + retorno[i].duracao;
+        body[0].appendChild(subtitulo);
+        
+        var video = document.createElement("iframe");
+        video.width="560";
+        video.height="315";
+        video.src=retorno[i].link;
+        body[0].appendChild(video);
+        
+        var abaComentario = document.createElement("h3");
+        abaComentario.innerText = 'Comentários:';
+
+        body[0].appendChild(abaComentario);
+        
+        var url_comentario = "https://roan-quiets.000webhostapp.com/pdo/select_comentario_feed.php";
+        
+        var xhttp_comentario = new XMLHttpRequest();
+    
+        xhttp_comentario.open("POST", url_comentario, false);
+        xhttp_comentario.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp_comentario.send("idMusica=" + retorno[i].id_musica);
+        
+        console.log(retorno[i].idMusica);
+            
+        var retorno_comentario = JSON.parse(xhttp_comentario.responseText);
+        
+        console.log(retorno_comentario);
+      
+        for (j = 0; j < retorno_comentario.length; j++) {
+            var tituloComentario = document.createElement("h4");
+            tituloComentario.innerText = retorno_comentario[j].nome + ' - ' + retorno_comentario[j].estado;
+            body[0].appendChild(tituloComentario);
+            
+            var comentario = document.createElement("p");
+            comentario.innerText = 'Comentário: ' + retorno_comentario[j].comentario;
+            body[0].appendChild(comentario);
+              
+        } 
+        
+        body[0].appendChild(document.createElement("br"));
+        body[0].appendChild(document.createElement("br")); 
+          
+    } 
+        
+</script></body>

@@ -1,0 +1,82 @@
+#bodyPerfil {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('/img/background_de_perfil.jpg'); /* subtitua com com o background desejado */
+    background-size: cover;
+}
+#voltarMenuPrincipal {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 2%;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#favoritarMusica {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 20%;
+    border-radius: 20px;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#subTiPerfil1 {
+    position: fixed; /* fixa o subtilo quando o site se move */
+    top: -3%;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #ff6600;
+    background-color: rgb(0, 0, 0);
+    border-style: double;
+    border-width: 0px 0px 5px 0px; /* Top, Right, Bottom, Left */
+    z-index: 1;
+}
+#subTiPerfil2 {
+    text-align: center;
+    margin: 10px;
+}
+#perfilPrincipal {
+    margin-top: 150px;
+    margin-bottom: 150px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-width: 5px 5px 5px 5px; /* Top, Right, Bottom, Left */
+    border-radius: 50px;
+    border-style: solid;
+    border-color: black;
+    color: #ff6600;
+    background-color: rgba(0, 0, 0, 0.871);
+}
+#informacoesPerfil {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 190px;
+    margin-right: 190px;
+    text-align: left;
+}
+#informacoesPerfil p {
+    margin: 15px 0;
+}
+#avatarDefault {
+    width: 150px;
+    height: 150px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50%;
+}
+p {
+    margin: 5px;
+}
+td {
+    font-size: 20px;
+    color: white;
+}

@@ -1,0 +1,77 @@
+CREATE TABLE IF NOT EXISTS genero (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(40) NOT NULL,
+	PRIMARY KEY (id)
+) DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS artista (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(40) NOT NULL,
+    	idGenero INTEGER NOT NULL,
+	PRIMARY KEY (id)
+) DEFAULT CHARSET=latin1;
+
+ALTER TABLE artista DROP CONSTRAINT IF EXISTS fk_artista_idGenero_genero;
+ALTER TABLE artista ADD CONSTRAINT fk_artista_idGenero_genero FOREIGN KEY (idGenero) REFERENCES genero (id);
+
+CREATE TABLE IF NOT EXISTS musica (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(40) NOT NULL,
+    	duracao DECIMAL(2,2) NOT NULL,
+    	dataLancamento DATE NOT NULL,
+    	link VARCHAR(200) NOT NULL,
+    	idGenero INTEGER NOT NULL,
+    	idArtista INTEGER NOT NULL,
+	PRIMARY KEY (id)
+) DEFAULT CHARSET=latin1;
+
+ALTER TABLE musica DROP CONSTRAINT IF EXISTS fk_musica_idGenero_genero;
+ALTER TABLE musica ADD CONSTRAINT fk_musica_idGenero_genero FOREIGN KEY (idGenero) REFERENCES genero (id);
+ALTER TABLE musica DROP CONSTRAINT IF EXISTS fk_musica_idArtista_artista;
+ALTER TABLE musica ADD CONSTRAINT fk_musica_idArtista_artista FOREIGN KEY (idArtista) REFERENCES artista (id);
+
+CREATE TABLE IF NOT EXISTS usuario (
+	id INTEGER NOT NULL AUTO_INCREMENT,
+	nome VARCHAR(40) NOT NULL,
+    	dataNascimento DATE NOT NULL,
+   	email VARCHAR(40) NOT NULL,
+    	senha VARCHAR(40) NOT NULL,
+    	telefone INTEGER,
+    	cidade VARCHAR(40) NOT NULL,
+    	estado VARCHAR(40) NOT NULL,
+   	pais VARCHAR(40) NOT NULL,
+	PRIMARY KEY (id)
+) DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS musicaXusuario (
+	idMusica INTEGER NOT NULL,
+	idUsuario INTEGER NOT NULL
+) DEFAULT CHARSET=latin1;
+
+ALTER TABLE musicaXusuario DROP CONSTRAINT IF EXISTS fk_mXu_idMusica_musica;
+ALTER TABLE musicaXusuario ADD CONSTRAINT fk_mXu_idMusica_musica FOREIGN KEY (idMusica) REFERENCES musica (id);
+ALTER TABLE musicaXusuario DROP CONSTRAINT IF EXISTS fk_mXu_idUsuario_usuario;
+ALTER TABLE musicaXusuario ADD CONSTRAINT fk_mXu_idUsuario_usuario FOREIGN KEY (idUsuario) REFERENCES usuario (id);
+
+CREATE TABLE IF NOT EXISTS comentario (
+        id INTEGER NOT NULL AUTO_INCREMENT,
+	idMusica INTEGER NOT NULL,
+	idUsuario INTEGER NOT NULL,
+        comentario VARCHAR(300) NOT NULL,
+	PRIMARY KEY (id)
+) DEFAULT CHARSET=latin1;
+
+ALTER TABLE comentario DROP CONSTRAINT IF EXISTS fk_comentario_idMusica_musica;
+ALTER TABLE comentario ADD CONSTRAINT fk_comentario_idMusica_musica FOREIGN KEY (idMusica) REFERENCES musica (id);
+ALTER TABLE comentario DROP CONSTRAINT IF EXISTS fk_comentario_idUsuario_usuario;
+ALTER TABLE comentario ADD CONSTRAINT fk_comentario_idUsuario_usuario FOREIGN KEY (idUsuario) REFERENCES usuario (id);
+
+CREATE TABLE IF NOT EXISTS usuarioXusuario (
+	idUsuario1 INTEGER NOT NULL,
+	idUsuario2 INTEGER NOT NULL
+) DEFAULT CHARSET=latin1;
+
+ALTER TABLE usuarioXusuario DROP CONSTRAINT IF EXISTS fk_uXu_idUsuario1_usuario;
+ALTER TABLE usuarioXusuario ADD CONSTRAINT fk_uXu_idUsuario1_usuario FOREIGN KEY (idusuario1) REFERENCES usuario(id);
+ALTER TABLE usuarioXusuario DROP CONSTRAINT IF EXISTS fk_uXu_idUsuario2_usuario;
+ALTER TABLE usuarioXusuario ADD CONSTRAINT fk_uXu_idUsuario1_usuario FOREIGN KEY (idUsuario2) REFERENCES usuario (id);

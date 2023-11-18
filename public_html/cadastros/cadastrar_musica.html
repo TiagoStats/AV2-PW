@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/styles_cad_mus.css">
+    <title>Cadastro - Rede Social de Músicas</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-section">
+            <h2>Cadastro de Música</h2>
+            <div class="form-group">
+                <label for="music_name">Nome da Música:</label>
+                <input type="text" id="music_name" name="music_name" required>
+            </div>
+            <div class="form-group">
+                <label for="idGenero">Gênero:</label>
+                <select name="idGenero" id="idGenero" required></select>
+            </div>
+            <div class="form-group">
+                <label for="idArtista">Artista:</label>
+                <select name="idArtista" id="idArtista" required></select>
+            </div>
+            <div class="form-group">
+                <label for="duration">Duração (em minutos):</label>
+                <input type="number" id="duration" name="duration" required>
+            </div>
+            <div class="form-group">
+                <label for="release_date">Data de Lançamento:</label>
+                <input type="date" id="release_date" name="release_date" required>
+            </div>
+            <button class="cadastrar-btn" onclick="cadastrarMusica()">Cadastrar</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Cadastro de Artista</h2>
+            <div class="form-group">
+                <label for="artist_name">Nome do Artista:</label>
+                <input type="text" id="artist_name" name="artist_name" required>
+            </div>
+            <button class="cadastrar-btn" onclick="cadastrarArtista()">Cadastrar</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Cadastro de Gênero</h2>
+            <div class="form-group">
+                <label for="genre_name">Nome do Gênero:</label>
+                <input type="text" id="genre_name" name="genre_name" required>
+            </div>
+            <button class="cadastrar-btn" onclick="cadastrarGenero()">Cadastrar</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
