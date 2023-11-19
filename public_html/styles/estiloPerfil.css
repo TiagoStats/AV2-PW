@@ -66,6 +66,18 @@
 #informacoesPerfil p {
     margin: 15px 0;
 }
+
+#musicasFavoritas {
+    margin: 0 auto; /* Define margens automáticas à esquerda e à direita */
+    width: 50%; /* Ajuste a largura conforme necessário */
+    text-align: center;
+}
+#musicasFavoritas td {
+    padding: 5px;
+    color: #ff6600;
+ /*   border: 1px solid white */
+}
+
 #avatarDefault {
     width: 150px;
     height: 150px;

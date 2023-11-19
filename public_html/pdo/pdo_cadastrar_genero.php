@@ -11,7 +11,7 @@
 	if( $count <= 0 ){
 		echo "Ooops! Erro ao cadastrar gênero!";
 	} else {
-	    header("Location: /cadastros/cadastrar_genero.html");
+	    header("Location: /cadastros/cadastrar_musica_artista_genero.html");
 	    die();
 	}
     

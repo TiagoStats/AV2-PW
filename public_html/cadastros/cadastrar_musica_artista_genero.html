@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/styles/styles_cad_mus.css">
+
+    <title>Cadastro - Rede Social de Músicas</title>
+
+    <script>
+
+    window.onload = function carregarParametros() {
+
+        var url = "/pdo/select_genero.php";
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", url, false);
+
+        xhttp.send();
+
+        var retorno = JSON.parse(xhttp.responseText);
+        var selecao_genero_1 = document.getElementById("idGenero");
+        var selecao_genero_2 = document.getElementById("idGeneroMusica");
+
+        for (i = 0; i < retorno.length; i++) {
+
+            var opcao_1 = document.createElement("option");
+            var opcao_2 = document.createElement("option");
+
+            opcao_1.value = retorno[i].id;
+            opcao_1.innerText = retorno[i].nome;
+
+            opcao_2.value = retorno[i].id;
+            opcao_2.innerText = retorno[i].nome;
+
+            selecao_genero_1.appendChild(opcao_1);
+            selecao_genero_2.appendChild(opcao_2);
+
+        } 
+        
+        // Carregando Artistas
+        
+        var url = "/pdo/select_artista.php";
+
+        var xhttp = new XMLHttpRequest();
+
+        xhttp.open("GET", url, false);
+
+        xhttp.send();
+
+        var retorno = JSON.parse(xhttp.responseText);
+        var selecao_artista = document.getElementById("idArtista");
+
+        for (i = 0; i < retorno.length; i++) {
+
+            var opcao = document.createElement("option");
+
+            opcao.value = retorno[i].id;
+            opcao.innerText = retorno[i].nome;
+
+            selecao_artista.appendChild(opcao);
+
+        } 
+
+    }
+
+</script>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Seção de Cadastro de Artista -->
+
+        <div class="form-section">
+
+            <h2>Cadastro de Artista</h2>
+
+            <form action="/pdo/pdo_cadastrar_artista.php" method="post" class="form-group">
+
+                <div class="form-group">
+
+                    <label for="nome">Nome do Artista:</label>
+
+                    <input type="text" id="nome" name="nome" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="idGeneroArtista">Gênero:</label>
+
+                    <select name="idGenero" id="idGenero" onchange="listarGeneros()" required>
+
+                        <option value="" disabled selected>Selecione um gênero</option>
+
+                        <!-- Opções de gêneros serão preenchidas dinamicamente pelo JavaScript -->
+
+                    </select>
+
+                </div>
+
+                <button type="submit" class="cadastrar-btn">Cadastrar Artista</button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- Seção de Cadastro de Gênero -->
+
+        <div class="form-section">
+
+            <h2>Cadastro de Gênero</h2>
+
+            <form action="/pdo/pdo_cadastrar_genero.php" method="post" class="form-group">
+
+                <div class="form-group">
+
+                    <label for="nome">Nome do Gênero:</label>
+
+                    <input type="text" id="nome" name="nome" required>
+
+                </div>
+
+                <button type="submit" class="cadastrar-btn">Cadastrar Gênero</button>
+
+            </form>
+
+        </div>
+
+
+
+        <!-- Seção de Cadastro de Música -->
+
+        <div class="form-section">
+
+            <h2>Cadastro de Música</h2>
+
+            <form action="/pdo/pdo_cadastrar_musica.php" method="post" class="form-group">
+
+                <div class="form-group">
+
+                    <label for="music_name">Nome da Música:</label>
+
+                    <input type="text" id="nome" name="nome" required>
+
+                </div>
+                
+                <div class="form-group">
+
+                    <label for="music_name">Link da Música:</label>
+
+                    <input type="text" id="link" name="link" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="idGeneroMusica">Gênero:</label>
+
+                    <select name="idGenero" id="idGeneroMusica" required>
+
+                        <option value="" disabled selected>Selecione um Gênero</option>
+
+                        <!-- Opções de gêneros serão preenchidas dinamicamente pelo JavaScript -->
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="idArtista">Artista:</label>
+
+                    <select name="idArtista" id="idArtista" required>
+
+                        <option value="" disabled selected>Selecione um Artista</option>
+
+                    </select>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="duration">Duração (em minutos):</label>
+
+                    <input type="number" id="duracao" name="duracao" required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="release_date">Data de Lançamento:</label>
+
+                    <input type="date" id="dataLancamento" name="dataLancamento" required>
+
+                </div>
+
+                <button type="submit" class="cadastrar-btn">Cadastrar Música</button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</body>
+
+
+
+</html>

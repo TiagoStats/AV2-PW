@@ -1,0 +1,52 @@
+<body>
+
+<script>
+
+    //--> Busca Sugestões de Amizade
+        
+    var url = "/pdo/select_sugestao_amigos.php";
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", url, false);
+    xhttp.send();
+        
+    var retorno = JSON.parse(xhttp.responseText);
+  
+    for (i = 0; i < retorno.length; i++) {
+        var body = document.getElementsByTagName("body");
+        
+        var nome = document.createElement("h2");
+        nome.innerText = retorno[i].nome;
+        body[0].appendChild(nome);
+        
+        var cidadeEstado = document.createElement("h4");
+        cidadeEstado.innerText = retorno[i].cidade + " - " + retorno[i].estado;
+        body[0].appendChild(cidadeEstado);
+        
+        var nascimento = document.createElement("h4");
+        nascimento.innerText = "Data de Nascimento - " + retorno[i].dataNascimento;
+        body[0].appendChild(nascimento);
+        
+        var form = document.createElement("form");
+        form.action = "/pdo/pdo_favoritar_amigo.php";
+        form.method = "POST";
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "idUsuario";
+        input.value = retorno[i].id;
+        input.hidden = true;
+        form.appendChild(input);
+        
+        var button = document.createElement("button");
+        button.type = "submit";
+        button.innerText = "Favoritar Amigo";
+        
+        form.appendChild(button);
+        
+        body[0].appendChild(form);
+        
+        body[0].appendChild(document.createElement("br"));
+        body[0].appendChild(document.createElement("br")); 
+          
+    } 
+        
+</script></body>

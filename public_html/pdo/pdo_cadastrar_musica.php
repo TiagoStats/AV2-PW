@@ -7,15 +7,16 @@
 	$idArtista = $_POST['idArtista'];
 	$idGenero = $_POST['idGenero'];
 	$nome = $_POST['nome'];
+	$link = $_POST['link'];
 	
-	$sql = "INSERT INTO musica (dataLancamento, duracao, idArtista, idGenero, nome) VALUES ('$dataLancamento', $duracao, $idArtista, $idGenero, '$nome')";
+	$sql = "INSERT INTO musica (dataLancamento, duracao, idArtista, idGenero, nome, link) VALUES ('$dataLancamento', $duracao, $idArtista, $idGenero, '$nome', '$link')";
 	
 	$count = $pdo->exec( $sql );
 	
 	if( $count <= 0 ){
 		echo "Ooops! Erro ao cadastrar música!";
 	} else {
-	    header("Location: /cadastros/cadastrar_musica.html");
+	    header("Location: /cadastros/cadastrar_musica_artista_genero.html");
 	    die();
 	}
     
