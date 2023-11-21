@@ -1,115 +1,64 @@
 <html>
 <head>
-    <title> Poste seu Comentario </title>
-
-<style type="text/css">
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-image: url('/img/comentario_background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-}
-#conteinerComentar {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 400px;
-    height: 370px; /* Altura ajustada para acomodar os campos extras */
-    overflow-y: auto;
-    margin: 0 20px;
-}
-#conteinerComentar select,
-#conteinerComentar input[type="submit"],
-#conteinerComentar textarea {
-  display: block;
-  margin-bottom: 25px; /* Define um espaçamento entre os elementos */
-}
-#conteinerComentar input[type="submit"] {
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-p {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-#conteinerComentar textarea {
-    width: 400px;
-    height: 100px;
-}
-
-</style>
-
+    <title>Poste seu Comentario</title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles_navegacao_telas.css">
 </head>
-<div id="conteinerComentar">
-<form action="/pdo/pdo_cadastrar_comentario.php" method="post">
-    <p> Usuários: </p>
-    <select name="idUsuario" id="idUsuario"></select>
-    <p> Músicas: </p>
-    <select name="idMusica" id="idMusica"></select>
-    <textarea maxlength="300" name="comentario" placeholder="Insira aqui seu comentário..."></textarea>
-    <input type="submit" value="Enviar Comentario" />
-    <a href="javascript:history.back()">Voltar a tela anterior</a>
-</form>
-</div>
+<body class="registrar_comentario">
+    <a href="/cadastros/perfil.html">
+        <input type="button" value="Meu perfil" id="meuPerfil" class="meuPerfil">
+    </a>
+    <a href="/cadastros/feed.html">
+        <input type="button" value="Voltar para o Feed" id="voltarFeed" class="voltarFeed">
+    </a>
+    <h1 id="subTiFeed">Cadastrar Comentário</h1>
 
-<script>
-    window.onload = function carregarParametros() {
-        
-        //--> Busca Músicas Cadastradas
-        
-        var url = "https://roan-quiets.000webhostapp.com/pdo/select_musica.php";
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, false);
-        xhttp.send();
-        
-        var retorno = JSON.parse(xhttp.responseText);
-        
-        var selecao_musica = document.getElementById("idMusica");
-  
-        for (i = 0; i < retorno.length; i++) {
-            
-            var opcao = document.createElement("option");
-            opcao.value = retorno[i].id;
-            opcao.innerText = retorno[i].nome;
-            selecao_musica.appendChild(opcao);
-           
-        } 
-        
-        //--> Busca Usuários Cadastrados
-        
-        var url = "https://roan-quiets.000webhostapp.com/pdo/select_usuario.php";
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, false);
-        xhttp.send();
-        
-        var retorno = JSON.parse(xhttp.responseText);
-        
-        var selecao_usuario = document.getElementById("idUsuario");
-  
-        for (i = 0; i < retorno.length; i++) {
-            
-            var opcao = document.createElement("option");
-            opcao.value = retorno[i].id;
-            opcao.innerText = retorno[i].nome;
-            selecao_usuario.appendChild(opcao);
-           
-        } 
-    
-    }
-</script>
+    <div id="conteinerComentar">
+        <form action="/pdo/pdo_cadastrar_comentario.php" method="post">
+            <p>Usuários:</p>
+            <select name="idUsuario" id="idUsuario"><option value="1">Tiago Stasaitis</option></select>
+            <p>Músicas:</p>
+            <select name="idMusica" id="idMusica"></select>
+            <textarea maxlength="300" name="comentario" placeholder="Insira aqui seu comentário..."></textarea>
+            <input type="submit" value="Enviar Comentario" />
+        </form>
+    </div>
+
+    <script>
+        window.onload = function carregarParametros() {
+
+            //--> Busca Músicas Cadastradas
+            var urlMusica = "/pdo/select_musica.php";
+            var xhttpMusica = new XMLHttpRequest();
+            xhttpMusica.open("GET", urlMusica, false);
+            xhttpMusica.send();
+
+            var retornoMusica = JSON.parse(xhttpMusica.responseText);
+            var selecaoMusica = document.getElementById("idMusica");
+
+            for (i = 0; i < retornoMusica.length; i++) {
+                var opcaoMusica = document.createElement("option");
+                opcaoMusica.value = retornoMusica[i].id;
+                opcaoMusica.innerText = retornoMusica[i].nome;
+                selecaoMusica.appendChild(opcaoMusica);
+            }
+
+            //--> Busca Usuários Cadastrados
+//            var urlUsuario = "/pdo/select_usuario.php";
+//            var xhttpUsuario = new XMLHttpRequest();
+//            xhttpUsuario.open("GET", urlUsuario, false);
+//            xhttpUsuario.send();
+
+//            var retornoUsuario = JSON.parse(xhttpUsuario.responseText);
+//            var selecaoUsuario = document.getElementById("idUsuario");
+
+//            for (i = 0; i < retornoUsuario.length; i++) {
+//                var opcaoUsuario = document.createElement("option");
+//                opcaoUsuario.value = retornoUsuario[i].id;
+//                opcaoUsuario.innerText = retornoUsuario[i].nome;
+//                selecaoUsuario.appendChild(opcaoUsuario);
+//            }
+
+        }
+    </script>
+</body>
 </html>

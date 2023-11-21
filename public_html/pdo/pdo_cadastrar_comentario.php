@@ -13,7 +13,7 @@
 	if( $count <= 0 ){
 		echo "Ooops! Erro ao cadastrar comentário!";
 	} else {
-	    header("Location: /cadastros/cadastrar_comentario.html");
+	    header("Location: /cadastros/feed.html");
 	    die();
 	}
     

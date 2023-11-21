@@ -1,107 +1,60 @@
 <html>
 <head>
-    <title> Cadastre sua musica favorita </title>
-<style type="text/css">
-    
-    body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    min-height: 100vh;
-    background-image: url('/img/login_background.jpg'); 
-    background-size: cover;
-    background-position: center;
-    color: #fff;
-}
-#conteinerFavMus {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    width: 300px;
-    height: 210px; /* Altura ajustada para acomodar os campos extras */
-    overflow-y: auto;
-    margin: 0 20px;
-}
-#conteinerFavMus select,
-#conteinerFavMus input[type="submit"] {
-  display: block;
-  margin-bottom: 25px; /* Define um espaçamento entre os elementos */
-}
-#conteinerFavMus input[type="submit"] {
-    background-color: #ff6600;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-p {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-</style>
+    <title> Cadastre sua música favorita </title>
+    <link rel="stylesheet" type="text/css" href="/styles/styles_navegacao_telas.css">
 </head>
-<body>
-<div id="conteinerFavMus">
-  <form action="/pdo/pdo_favoritar_musica.php" method="post">
-      <p> Usuários: </p>
-      <select name="idUsuario" id="idUsuario"></select>
-      <p> Músicas: </p>
-      <select name="idMusica" id="idMusica"></select>
-      <input type="submit" value="Cadastrar" />
-  </form>
-</div>
-<script>
-    window.onload = function carregarParametros() {
-        
-        //--> Busca Músicas Cadastradas
-        
-        var url = "/pdo/select_musica.php";
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, false);
-        xhttp.send();
-        
-        var retorno = JSON.parse(xhttp.responseText);
-        
-        var selecao_musica = document.getElementById("idMusica");
-  
-        for (i = 0; i < retorno.length; i++) {
+<body class="fav_musica">
+    <div id="conteinerFavMus">
+        <form action="/pdo/pdo_favoritar_musica.php" method="post">
+            <p>Usuários:</p>
+            <select name="idUsuario" id="idUsuario"></select>
+            <p>Músicas:</p>
+            <select name="idMusica" id="idMusica"></select>
+            <div style="display: flex; justify-content: space-between;">
+                <input type="submit" value="Cadastrar" class="cadastrar-btn" />
+                <button type="button" class="cancelar-btn" onclick="voltarParaPerfil()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        function carregarParametros() {
+            //--> Busca Músicas Cadastradas
+            var url = "/pdo/select_musica.php";
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, false);
+            xhttp.send();
+            var retorno = JSON.parse(xhttp.responseText);
+            var selecao_musica = document.getElementById("idMusica");
+
+            for (i = 0; i < retorno.length; i++) {
+                var opcao = document.createElement("option");
+                opcao.value = retorno[i].id;
+                opcao.innerText = retorno[i].nome;
+                selecao_musica.appendChild(opcao);
+            } 
             
-            var opcao = document.createElement("option");
-            opcao.value = retorno[i].id;
-            opcao.innerText = retorno[i].nome;
-            selecao_musica.appendChild(opcao);
-           
-        } 
-        
-        //--> Busca Usuários Cadastrados
-        
-        var url = "/pdo/select_usuario.php";
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", url, false);
-        xhttp.send();
-        
-        var retorno = JSON.parse(xhttp.responseText);
-        
-        var selecao_usuario = document.getElementById("idUsuario");
-  
-        for (i = 0; i < retorno.length; i++) {
-            
-            var opcao = document.createElement("option");
-            opcao.value = retorno[i].id;
-            opcao.innerText = retorno[i].nome;
-            selecao_usuario.appendChild(opcao);
-           
-        } 
-    
-    }
-</script>
+            //--> Busca Usuários Cadastrados
+            var url = "/pdo/select_usuario.php";
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", url, false);
+            xhttp.send();
+            var retorno = JSON.parse(xhttp.responseText);
+            var selecao_usuario = document.getElementById("idUsuario");
+
+            for (i = 0; i < retorno.length; i++) {
+                var opcao = document.createElement("option");
+                opcao.value = retorno[i].id;
+                opcao.innerText = retorno[i].nome;
+                selecao_usuario.appendChild(opcao);
+            } 
+        }
+
+        function voltarParaPerfil() {
+            // Redireciona para a página do perfil
+            window.location.href = "perfil.html"; // Substitua pelo caminho correto do perfil
+        }
+
+        carregarParametros();
+    </script>
 </body>
 </html>

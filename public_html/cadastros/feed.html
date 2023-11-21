@@ -1,66 +1,81 @@
-<body>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Feed de Músicas</title>
+    <link rel="stylesheet" href="/styles/styles_navegacao_telas.css">
+</head>
+<body class="feed-page">
+    <a href="/cadastros/perfil.html">
+        <input type="button" value="Meu perfil" id="meuPerfil" class="meuPerfil">
+    </a>
+    <a href="/cadastros/cadastrar_musica_artista_genero.html">
+        <input type="button" value="Cadastros" id="adicionarMusica" class="adicionarMusica">
+    </a>
+    <a href="/cadastros/cadastrar_comentario.html">
+        <input type="button" value="Adicionar Comentário" id="adicionarComentario" class="adicionarComentario">
+    </a>
+    <h1 id="subTiFeed">Feed</h1>
+    <br>
+    <script>
 
-<script>
-
-    //--> Busca Musicas
+        //--> Busca Músicas
+        var url = "/pdo/select_musica_feed.php";
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", url, false);
+        xhttp.send();
         
-    var url = "https://roan-quiets.000webhostapp.com/pdo/select_musica_feed.php";
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", url, false);
-    xhttp.send();
-        
-    var retorno = JSON.parse(xhttp.responseText);
-  
-    for (i = 0; i < retorno.length; i++) {
-        var body = document.getElementsByTagName("body");
-        
-        var titulo = document.createElement("h2");
-        titulo.innerText = retorno[i].nome_musica + ' - ' + retorno[i].nome_artista;
-        body[0].appendChild(titulo);
-        
-        var subtitulo = document.createElement("h3");
-        subtitulo.innerText = 'Genero: ' + retorno[i].nome_genero + ' - Duração: ' + retorno[i].duracao;
-        body[0].appendChild(subtitulo);
-        
-        var video = document.createElement("iframe");
-        video.width="560";
-        video.height="315";
-        video.src=retorno[i].link;
-        body[0].appendChild(video);
-        
-        var abaComentario = document.createElement("h3");
-        abaComentario.innerText = 'Comentários:';
-
-        body[0].appendChild(abaComentario);
-        
-        var url_comentario = "https://roan-quiets.000webhostapp.com/pdo/select_comentario_feed.php";
-        
-        var xhttp_comentario = new XMLHttpRequest();
-    
-        xhttp_comentario.open("POST", url_comentario, false);
-        xhttp_comentario.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhttp_comentario.send("idMusica=" + retorno[i].id_musica);
-        
-        console.log(retorno[i].idMusica);
-            
-        var retorno_comentario = JSON.parse(xhttp_comentario.responseText);
-        
-        console.log(retorno_comentario);
+        var retorno = JSON.parse(xhttp.responseText);
       
-        for (j = 0; j < retorno_comentario.length; j++) {
-            var tituloComentario = document.createElement("h4");
-            tituloComentario.innerText = retorno_comentario[j].nome + ' - ' + retorno_comentario[j].estado;
-            body[0].appendChild(tituloComentario);
+        for (i = 0; i < retorno.length; i++) {
+            var body = document.getElementsByTagName("body");
             
-            var comentario = document.createElement("p");
-            comentario.innerText = 'Comentário: ' + retorno_comentario[j].comentario;
-            body[0].appendChild(comentario);
+            var titulo = document.createElement("h2");
+            titulo.innerText = retorno[i].nome_musica + ' - ' + retorno[i].nome_artista;
+            body[0].appendChild(titulo);
+            
+            var subtitulo = document.createElement("h3");
+            subtitulo.innerText = 'Gênero: ' + retorno[i].nome_genero + ' - Duração: ' + retorno[i].duracao;
+            body[0].appendChild(subtitulo);
+            
+            var video = document.createElement("iframe");
+            video.width="560";
+            video.height="315";
+            video.src=retorno[i].link;
+            body[0].appendChild(video);
+            
+            var abaComentario = document.createElement("h3");
+            abaComentario.innerText = 'Comentários:';
+            body[0].appendChild(abaComentario);
+            
+            var urlComentario = "/pdo/select_comentario_feed.php";
+            
+            var xhttpComentario = new XMLHttpRequest();
+        
+            xhttpComentario.open("POST", urlComentario, false);
+            xhttpComentario.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttpComentario.send("idMusica=" + retorno[i].id_musica);
+            
+            console.log(retorno[i].id_musica);
+            var retornoComentario = JSON.parse(xhttpComentario.responseText);
+            console.log(retornoComentario);
+          
+            for (j = 0; j < retornoComentario.length; j++) {
+                var tituloComentario = document.createElement("h4");
+                tituloComentario.innerText = retornoComentario[j].nome + ' - ' + retornoComentario[j].estado;
+                body[0].appendChild(tituloComentario);
+                
+                var comentario = document.createElement("p");
+                comentario.innerText = 'Comentário: ' + retornoComentario[j].comentario;
+                body[0].appendChild(comentario);
+                body[0].appendChild(document.createElement("br"));  
+                  
+            } 
+            
+            body[0].appendChild(document.createElement("br"));
+            body[0].appendChild(document.createElement("br")); 
               
         } 
         
-        body[0].appendChild(document.createElement("br"));
-        body[0].appendChild(document.createElement("br")); 
-          
-    } 
-        
-</script></body>
+    </script>
+</body>
+</html>

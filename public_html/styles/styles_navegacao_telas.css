@@ -1,0 +1,537 @@
+/* Estilos para a página de perfil */
+body.profile-page {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-image: url('/img/background_de_perfil.jpg'); 
+    background-size: cover;
+}
+
+#telaFeed {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 2%;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#favoritarMusica {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 13%;
+    border-radius: 20px;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#favoritarAmigos {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 29.5%;
+    border-radius: 20px;
+    z-index: 4;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#subTiPerfil1 {
+    position: fixed;
+    top: -3%;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #ff6600;
+    background-color: rgb(0, 0, 0);
+    border-style: double;
+    border-width: 0px 0px 5px 0px; 
+    z-index: 1;
+}
+
+#subTiPerfil2 {
+    text-align: left;
+    margin: 10px;
+}
+
+#perfilPrincipal {
+    margin-top: 150px;
+    margin-bottom: 0px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-width: 5px 5px 5px 5px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: black;
+    color: #ff6600;
+    background-color: rgba(0, 0, 0, 0.871);
+}
+
+#informacoesPerfil {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: left;
+    display: inline-block;
+    vertical-align: top;
+    width: calc(50% - 40px);
+}
+
+#informacoesPerfil p {
+    margin: 15px 0;
+}
+
+#friendSuggestions {
+    margin: 0 auto; 
+    width: 50%; 
+    text-align: center;
+}
+#friendSuggestions td {
+    padding: 5px;
+    color: #ff6600;
+}
+
+#musicasFavoritas {
+    margin: 0 auto;
+    width: 50%;
+    text-align: center;
+}
+
+#musicasFavoritas td {
+    padding: 5px;
+    color: #ff6600;
+}
+
+#avatarDefault {
+    width: 150px;
+    height: 150px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 50%;
+}
+
+#listaFavAmigos {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 400px;
+    margin-right: 400px;
+    border-width: 5px 5px 5px 5px;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: black;
+    color: #ff6600;
+    background-color: rgba(0, 0, 0, 0.871);
+}
+
+p {
+    margin: 5px;
+}
+
+td {
+    font-size: 20px;
+    color: white;
+}
+
+h2, h3, h4 {
+    margin: 10px 0;
+}
+
+
+/* Estilos para a página de feed de músicas */
+body.feed-page {
+    font-family: Arial, sans-serif;
+    background-image: url('/img/tema_musica2.jpg');
+    background-color: rgba(0, 0, 0, 0.871);
+    color: #ff6600;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#subTiFeed {
+    position: fixed;
+    top: -3%;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #ff6600;
+    background-color: rgb(0, 0, 0);
+    border-style: double;
+    border-width: 0px 0px 5px 0px;
+    z-index: 1;
+}
+
+#meuPerfil {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 2%;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#adicionarMusica {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 10%;
+    border-radius: 20px;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#adicionarComentario {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 22.5%;
+    border-radius: 20px;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.musica-container {
+    margin-bottom: 20px;
+}
+
+h2, h3, h4 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 5px 0;
+}
+
+
+/* Estilos para a página de cadastro de músicas */
+body.register-page {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background-image: url('/img/tema_cadastro_musica.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#subTiFeed {
+    position: fixed;
+    top: -3%;
+    left: 0;
+    width: 100%;
+    text-align: left;
+    color: #ff6600;
+    background-color: rgb(0, 0, 0);
+    border-style: double;
+    border-width: 0px 0px 5px 0px;
+    z-index: 1;
+}
+
+#meuPerfil {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 2%;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#voltarFeed {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 10%;
+    border-radius: 20px;
+    z-index: 3;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    width: 100%;
+}
+
+.form-section {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.cadastrar-btn {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.cadastrar-btn:hover {
+    background-color: #e85500;
+}
+
+#idUsuario,
+#idMusica {
+    overflow-y: auto;
+    max-height: 100px;
+}
+    
+
+/* Estilos para a página sugestao_amigos */
+body.sugestao-amigos {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('/img/background_de_perfil.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Novos estilos para o contêiner do amigo sugerido */
+.amigo-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ff6600;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+h2, h4 {
+    margin: 5px;
+    color: #ff6600;
+}
+
+input[type="text"],
+button {
+    margin-top: 5px;
+    padding: 5px;
+}
+
+button {
+    background-color: #e85500;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#meuPerfil {
+    font-size: 20px;
+    color: white;
+    background-color: #ff6600;
+    position: fixed;
+    top: 0.6%;
+    right: 2%;
+    border-radius: 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+/* Estilos específicos para a página "Cadastrar Música Favorita" */
+body.fav_musica {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-height: 100vh;
+    background-image: url('/img/background_de_perfil.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#conteinerFavMus {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 300px;
+    height: 210px;
+    overflow-y: auto;
+    margin: 0 20px;
+    overflow: hidden;
+}
+
+#conteinerFavMus select,
+#conteinerFavMus input[type="submit"] {
+  display: block;
+  margin-bottom: 25px;
+}
+
+#conteinerFavMus input[type="submit"] {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+p {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.cadastrar-btn,
+.cancelar-btn {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 5px;
+}
+
+.cadastrar-btn:hover,
+.cancelar-btn:hover {
+    background-color: #e85500;
+}
+
+/* Estilo específico para o botão Cancelar */
+.cancelar-btn {
+    margin-left: 5px;
+}
+        
+#idUsuario,
+#idMusica {
+    overflow-y: auto;
+    max-height: 100px;
+}
+   
+body.registrar_comentario {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-image: url('/img/comentario_background.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+
+#conteinerComentar {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    width: 400px;
+    height: 370px;
+    overflow-y: auto;
+    margin: 0 20px;
+}
+
+#conteinerComentar select,
+#conteinerComentar input[type="submit"],
+#conteinerComentar textarea {
+    display: block;
+    margin-bottom: 25px;
+}
+
+#conteinerComentar input[type="submit"] {
+    background-color: #ff6600;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+p {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+#conteinerComentar textarea {
+    width: 400px;
+    height: 100px;
+}
